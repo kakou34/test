@@ -23,3 +23,13 @@ Route::get('/storeRatings/{ratings}', [
     'uses' => 'HomeController@saveRatings',
     'as' => 'storeRatings'
 ]);
+
+Route::get('/prediction/{user_id}', [
+    'uses' => 'PredictionPageController@load',
+    'as' => 'PredictionPage'
+]);
+
+Route::get('/movie/{user_id}/{movie_id}', [
+    'uses' => 'MovieController@load',
+    'as' => 'MoviePage'
+]);

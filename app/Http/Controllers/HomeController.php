@@ -38,7 +38,7 @@ class HomeController extends Controller
         $arrayRatings = json_decode($ratings, true);
         $user = auth()->user();
         $id = $user->id;
-        $id = 944;
+
 
         //store the data to the matrix
         $pwd = getcwd();
