@@ -16,7 +16,7 @@
 
                                         <div class="card-body">
                                             <h3>{{$movie->name}}</h3>
-                                            <h4>{{$itemBasedPrediction}}</h4>
+                                            <h4>{{$result}}</h4>
 
                                         </div>
                                         <div class="card-header">

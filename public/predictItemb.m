@@ -40,5 +40,6 @@ up = dot(nearest_items(:,1),nearest_items(:,2));
 down = sum(nearest_items(:,2));
 
 prediction = up/down;
+csvwrite('result.csv', prediction);
 end
 

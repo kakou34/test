@@ -15,7 +15,7 @@
                                 </tr>
                                 @foreach($movies as $movie)
                                     <tr>
-                                        <th> <a href="{{route('MoviePage', ['user_id'=>  $user->id, 'user_id'=>  $movie->id ])}}"> {{$movie->name}} </a> </th>
+                                        <th> <a href="{{route('MoviePage', ['user_id'=>  $user->id, 'movie_id'=>  $movie->id ])}}"> {{$movie->name}} </a> </th>
                                     </tr>
                                 @endforeach
                             </table>
