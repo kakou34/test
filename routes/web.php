@@ -24,6 +24,11 @@ Route::get('/storeRatings/{ratings}', [
     'as' => 'storeRatings'
 ]);
 
+Route::get('/storeRatings2/{ratings}', [
+    'uses' => 'RatingPageController@saveRatings',
+    'as' => 'storeRatings2'
+]);
+
 Route::get('/prediction/{user_id}', [
     'uses' => 'PredictionPageController@load',
     'as' => 'PredictionPage'
@@ -32,4 +37,9 @@ Route::get('/prediction/{user_id}', [
 Route::get('/movie/{user_id}/{movie_id}', [
     'uses' => 'MovieController@load',
     'as' => 'MoviePage'
+]);
+
+Route::get('/rate/{user_id}', [
+    'uses' => 'RatingPageController@load',
+    'as' => 'RatingPage'
 ]);

@@ -1,5 +1,22 @@
 @extends('layouts.app')
 
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "pageLength": 100,
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+
+        });
+    </script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -15,16 +32,26 @@
                         @if($user->moviesRated<20)
                             Please rate at least 20 movies to continue! The more movies you rate, the better will be our
                             predictions ;)
+
                             <div id="tableOfMovies">
-                                <table id="table1" class="table table-bordered table-striped" style="width:100%">
+                                <table class="table table-bordered table-striped" id="dataTable" style="width:100%">
+                                    <thead>
                                     <tr>
                                         <th>Movie Name</th>
                                         <th>Your rating</th>
                                     </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Movie Name</th>
+                                        <th>Your rating</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
                                     @foreach($movies as $movie)
                                         <tr>
-                                            <th>{{$movie->name}}</th>
-                                            <th>
+                                            <td>{{$movie->name}}</td>
+                                            <td>
                                                 <select class="rate_select" id="{{$movie->id}}">
                                                     <option value="0">Select</option>
                                                     <option value="1">1</option>
@@ -33,13 +60,15 @@
                                                     <option value="4">4</option>
                                                     <option value="5">5</option>
                                                 </select>
-                                            </th>
+                                            </td>
                                         </tr>
                                     @endforeach
+                                    </tbody>
                                 </table>
                                 <button class="btn-dark rate" id="rate" type="submit" onclick="sendRate()">Submit
                                 </button>
                             </div>
+
                         @else
 
                             <div class="row">
@@ -59,7 +88,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="card">
-                                        <a href="">
+                                        <a href="{{route('RatingPage', ['user_id'=>  $user->id ])}}">
                                             <div class="card-body">
 
                                             </div>
