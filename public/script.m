@@ -2,8 +2,8 @@ clear all;
 close all; 
 clc;
 
-item = 1;
-user = 944;
+item = 1653;
+user =  944;
 
-p= predictItemb(item, user);
+p= predict(user, item);
 

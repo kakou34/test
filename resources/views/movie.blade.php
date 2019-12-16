@@ -16,7 +16,7 @@
 
                                         <div class="card-body">
                                             <h3>{{$movie->name}}</h3>
-                                            <h4>{{$result}}</h4>
+                                            <h4>{{$itemBased}}</h4>
 
                                         </div>
                                         <div class="card-header">
@@ -30,6 +30,8 @@
                                 <div class="card">
 
                                         <div class="card-body">
+                                            <h3>{{$movie->name}}</h3>
+                                            <h4>{{$userBased}}</h4>
 
                                         </div>
                                         <div class="card-header">

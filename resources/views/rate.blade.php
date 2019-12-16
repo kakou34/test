@@ -4,7 +4,7 @@
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
-                "pageLength": 100,
+                "pageLength": 25,
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>{{$movie->name}}</td>
                                     <td>
-                                        <select class="rate_select" id="{{$movie->id}}">
+                                        <select class="rate_select" id="{{$movie->id}}" onchange="selectChange({{$movie->id}})" autocomplete="off">
                                             <option value="0">Select</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -75,20 +75,22 @@
 @endsection
 
 <script type="text/javascript">
+
+    var ratings = [];
     function sendRate2() {
-        var selects = $('.rate_select');
-        var ratings = [];
-        if (selects.length > 0) {
-            selects.each(function (i) {
-                if ($(this).find(":selected").index() !== 0) {
-                    ratings.push([i + 1, $(this).find(":selected").index()])
-                }
-            });
-        }
+        console.log(ratings);
         var json = JSON.stringify(ratings);
         //alert(json);
         var url = '{{ route("storeRatings2", ":ratings") }}';
         url = url.replace(':ratings', json);
         window.location.href = url;
+    }
+
+    function selectChange (movieID) {
+        selectEl = $('#'+movieID);
+        ratings = ratings.filter(function(item){ return item[0] != movieID });
+        if (selectEl.find(":selected").index() !== 0) {
+            ratings.push([movieID, selectEl.find(":selected").index()])
+        }
     }
 </script>

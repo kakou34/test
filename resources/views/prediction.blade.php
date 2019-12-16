@@ -4,7 +4,7 @@
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
-                "pageLength": 100,
+                "pageLength": 25,
                 "paging": true,
                 "lengthChange": true,
                 "searching": true,
